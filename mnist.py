@@ -282,6 +282,30 @@ model.save('mnistt.h5')
 accuracy=h.history['accuracy'][-1]*100
 
 
+# In[49]:
+
+
+f=open("accuracy.txt","w")
+
+
+# In[50]:
+
+
+f.write(str(accuracy))
+
+
+# In[51]:
+
+
+f.close()
+
+
+# In[52]:
+
+
+accuracy
+
+
 # In[ ]:
 
 
