@@ -1,262 +1,262 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 from keras.datasets import mnist
 from keras.optimizers import Adam
 
 
-# In[2]:
+# In[3]:
 
 
 dataset = mnist.load_data('mymnist.db')
 
 
-# In[3]:
+# In[4]:
 
 
 len(dataset)
 
 
-# In[4]:
+# In[5]:
 
 
 train , test = dataset
 
 
-# In[5]:
+# In[6]:
 
 
 len(train)
 
 
-# In[6]:
+# In[7]:
 
 
 X_train , y_train = train
 
 
-# In[7]:
-
-
-X_train.shape
-
-
 # In[8]:
 
 
-X_test , y_test = test
+X_train.shape
 
 
 # In[9]:
 
 
-X_test.shape
+X_test , y_test = test
 
 
 # In[10]:
 
 
-img1 = X_train[7]
+X_test.shape
 
 
 # In[11]:
 
 
-img1.shape
+img1 = X_train[7]
 
 
 # In[12]:
 
 
-import cv2
+img1.shape
 
 
 # In[13]:
 
 
-img1_label = y_train[7]
+import cv2
 
 
 # In[14]:
 
 
-img1_label
+img1_label = y_train[7]
 
 
 # In[15]:
 
 
-img1.shape
+img1_label
 
 
 # In[16]:
 
 
-import matplotlib.pyplot as plt
+img1.shape
 
 
 # In[17]:
 
 
-plt.imshow(img1 , cmap='gray')
+import matplotlib.pyplot as plt
 
 
 # In[18]:
 
 
-img1.shape
+plt.imshow(img1 , cmap='gray')
 
 
 # In[19]:
 
 
-img1_1d = img1.reshape(28*28)
+img1.shape
 
 
 # In[20]:
 
 
-img1_1d.shape
+img1_1d = img1.reshape(28*28)
 
 
 # In[21]:
 
 
-X_train.shape
+img1_1d.shape
 
 
 # In[22]:
+
+
+X_train.shape
+
+
+# In[23]:
 
 
 X_train_1d = X_train.reshape(-1 , 28*28)
 X_test_1d = X_test.reshape(-1 , 28*28)
 
 
-# In[23]:
+# In[24]:
 
 
 X_train_1d.shape
 
 
-# In[24]:
+# In[25]:
 
 
 X_train = X_train_1d.astype('float32')
 X_test = X_test_1d.astype('float32')
 
 
-# In[25]:
+# In[26]:
 
 
 X_train.shape
 
 
-# In[26]:
+# In[27]:
 
 
 y_train.shape
 
 
-# In[27]:
+# In[28]:
 
 
 from keras.utils.np_utils import to_categorical
 
 
-# In[28]:
+# In[29]:
 
 
 y_train_cat = to_categorical(y_train)
 
 
-# In[29]:
+# In[30]:
 
 
 y_train_cat
 
 
-# In[30]:
+# In[31]:
 
 
 y_train_cat[7]
 
 
-# In[31]:
+# In[32]:
 
 
 from keras.models import Sequential
 
 
-# In[32]:
+# In[33]:
 
 
 from keras.layers import Dense
 
 
-# In[33]:
+# In[34]:
 
 
 model = Sequential()
 
 
-# In[34]:
+# In[35]:
 
 
 model.add(Dense(units=512, input_dim=28*28, activation='relu'))
 
 
-# In[35]:
-
-
-model.summary()
-
-
 # In[36]:
 
 
-model.add(Dense(units=256, activation='relu'))
+model.summary()
 
 
 # In[37]:
 
 
-model.add(Dense(units=128, activation='relu'))
+model.add(Dense(units=256, activation='relu'))
 
 
 # In[38]:
 
 
-model.add(Dense(units=32, activation='relu'))
+model.add(Dense(units=128, activation='relu'))
 
 
 # In[39]:
 
 
-model.summary()
+model.add(Dense(units=32, activation='relu'))
 
 
 # In[40]:
 
 
-model.add(Dense(units=10, activation='softmax'))
+model.summary()
 
 
 # In[41]:
 
 
-model.summary()
+model.add(Dense(units=10, activation='softmax'))
 
 
 # In[42]:
 
 
-from keras.optimizers import RMSprop
+model.summary()
 
 
 # In[43]:
+
+
+from keras.optimizers import RMSprop
+
+
+# In[44]:
 
 
 model.compile(optimizer='adam', loss='categorical_crossentropy', 
@@ -264,14 +264,32 @@ model.compile(optimizer='adam', loss='categorical_crossentropy',
              )
 
 
-# In[46]:
+# In[45]:
 
 
 h = model.fit(X_train, y_train_cat, epochs=5)
 
 
-# In[55]:
+# In[46]:
 
 
 model.save('mnistt.h5')
+
+
+# In[47]:
+
+
+accuracy=h.history['accuracy'][-1]*100
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
