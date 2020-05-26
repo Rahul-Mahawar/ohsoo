@@ -285,7 +285,7 @@ accuracy=h.history['accuracy'][-1]*100
 # In[49]:
 
 
-f=open("accuracy.txt","w")
+f=open("/mlops/accuracy.txt","w")
 
 
 # In[50]:

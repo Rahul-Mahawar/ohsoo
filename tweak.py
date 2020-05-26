@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[25]:
+# In[26]:
 
 
 import numpy as np
@@ -27,7 +27,7 @@ train_X = train_X.astype("float32")
 test_y = npu.to_categorical(test_y)
 train_y = npu.to_categorical(train_y)
 
-accuracy= open("accuracy.txt","r")
+accuracy= open("/mlops/accuracy.txt","r")
 accuracy = float(accuracy.read())
 
 
